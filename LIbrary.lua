@@ -3350,6 +3350,7 @@ function library:toggle(properties)
 	--
 
 	function cfg.set(bool)
+		cfg.enabled = bool
 		icon_2.Visible = bool
 		glow.Visible = bool
 
@@ -4682,7 +4683,7 @@ function library:keybind(properties)
 		name = properties.name or nil,
 		key = properties.default or properties.key or nil,
 		mode = properties.mode or "toggle",
-		active = properties.default or false,
+		active = properties.active or false,
 		display = properties.displayName or properties.display or properties.name or nil,
 		hold_instances = {},
 	}
@@ -4990,6 +4991,7 @@ function library:keybind(properties)
 	end
 
 	local selected
+	local toggled = false
 
 	hold.MouseButton1Click:Connect(function()
 		if selected then
