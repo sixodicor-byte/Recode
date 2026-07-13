@@ -335,8 +335,8 @@ function library:config_list_update()
 	local list = {}
 
 	for idx, file in next, listfiles(library.directory .. "/configs") do
-		local name = file.split(file, "/configs/")[2]
-		name = name.split(name, ".cfg")[1]
+		local name = string.match(file, "[/\\]configs[/\\](.+)$") or file
+		name = string.match(name, "(.+)%..-$") or name
 		list[#list + 1] = name
 	end
 
@@ -2498,6 +2498,7 @@ function library:notification(properties)
 	end)
 
 	task.delay(cfg.time + 0.1, function()
+		if not library then return end
 		table.remove(library.notifications, table.find(library.notifications, holder))
 		cfg:refresh_notifications()
 		task.wait(0.5)
