@@ -5244,6 +5244,7 @@ function library:panel(properties)
 		Name = "",
 		BackgroundTransparency = 0.4000000059604645,
 		Size = UDim2.new(1, 0, 1, 0),
+		Position = UDim2.new(0, 0, 0, -36),
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
 		ZIndex = 3,
 		BorderSizePixel = 0,
